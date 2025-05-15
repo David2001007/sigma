@@ -21,5 +21,14 @@ namespace Sigma.API.Controllers
         {
             return new JsonResult(await _projetoService.Inserir(model));
         }
+
+        [HttpGet]
+        [Route("listar")]
+        public async Task<IActionResult> Listar()
+        {
+            var resultado = await _projetoService.Listar();
+            return Ok(resultado);
+        }
+
     }
 }
