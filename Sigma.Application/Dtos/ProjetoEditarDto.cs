@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sigma.Application.Dtos
 {
-    public class ProjetoDto
+    public class ProjetoEditarDto
     {
         public string? Nome { get; set; }
         public string? Descricao { get; set; }
@@ -16,5 +16,6 @@ namespace Sigma.Application.Dtos
         public decimal? OrcamentoTotal { get; set; }
         public Risco? Risco { get; set; }
         public StatusProjeto? Status { get; set; }
+
     }
 }

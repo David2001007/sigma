@@ -9,5 +9,6 @@ public class MappingProfile : Profile
         CreateMap<Projeto, ProjetoDto>();
 
         CreateMap<ProjetoDto, Projeto>();
+
     }
 }

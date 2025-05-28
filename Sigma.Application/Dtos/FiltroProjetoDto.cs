@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sigma.Application.Dtos
 {
-    public class ProjetoDto
+    public class FiltroProjetoDto
     {
         public string? Nome { get; set; }
         public string? Descricao { get; set; }
