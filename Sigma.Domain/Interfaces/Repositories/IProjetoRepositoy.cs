@@ -16,7 +16,7 @@ namespace Sigma.Domain.Interfaces.Repositories
         Task UpdateAsync(Projeto projeto);
         Task<List<Projeto>> Listar();
         Task<IEnumerable<Projeto>> GetByFiltroAsync(string? nome, StatusProjeto? status);
-
-
+        Task<bool> InserirLogin(Login login);
+        Task<Login> GetByUsuarioAsync(string usuario);        
     }
 }

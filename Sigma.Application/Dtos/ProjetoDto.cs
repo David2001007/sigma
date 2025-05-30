@@ -16,5 +16,6 @@ namespace Sigma.Application.Dtos
         public decimal? OrcamentoTotal { get; set; }
         public Risco? Risco { get; set; }
         public StatusProjeto? Status { get; set; }
+        public DateTime? DataRealTermino { get; set; }
     }
 }

@@ -12,5 +12,9 @@ namespace Sigma.Application.Interfaces
         Task<IEnumerable<ProjetoDto>> ConsultarPorFiltro(string? nome, StatusProjeto? status);
         Task Excluir(long id);
         Task Alterar(long id, ProjetoEditarDto dto);
+        Task<bool> InserirLogin(LoginNovoDto model);
+        Task<Login> ObterLoginPorUsuario(string usuario);
+
+
     }
 }

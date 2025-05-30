@@ -12,6 +12,5 @@ namespace Sigma.Domain.Dtos
         public decimal? OrcamentoTotal { get; set; }
         public Risco? Risco { get; set; }
         public StatusProjeto? Status { get; set; }
-
     }
 }

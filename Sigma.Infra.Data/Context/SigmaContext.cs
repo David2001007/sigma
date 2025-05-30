@@ -8,6 +8,7 @@ namespace Sigma.Infra.Data.Context
     {
         public SigmaContext(DbContextOptions<SigmaContext> options) : base(options) { }
         public DbSet<Projeto> Projetos { get; set; }        
+        public DbSet<Login> Logins { get; set; }        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -34,6 +34,11 @@ namespace Sigma.Application.Services
             projeto.Risco = (Risco)dto.Risco;
             projeto.Status = (StatusProjeto)dto.Status;
 
+            if (projeto.Status == StatusProjeto.Encerrado)
+                projeto.DataRealTermino = DateTime.UtcNow;
+            else
+                projeto.DataRealTermino = null;
+
             await _projetoRepository.UpdateAsync(projeto);
             return true;
         }
@@ -72,6 +77,12 @@ namespace Sigma.Application.Services
         {
             return await _projetoRepository.Inserir(_mapper.Map<Projeto>(model));
         }
+
+        public async Task<bool> InserirLogin(LoginNovoDto model)
+        {
+            return await _projetoRepository.InserirLogin(_mapper.Map<Login>(model));
+        }
+
         public async Task<List<ProjetoDto>> Listar()
         {
             var projetos = await _projetoRepository.Listar();
@@ -88,5 +99,10 @@ namespace Sigma.Application.Services
         {
             return Excluir(id);
         }
+        public async Task<Login> ObterLoginPorUsuario(string usuario)
+        {
+            return await _projetoRepository.GetByUsuarioAsync(usuario);
+        }
+
     }
 }

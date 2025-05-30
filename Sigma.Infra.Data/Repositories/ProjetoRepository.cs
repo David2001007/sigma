@@ -15,6 +15,7 @@ namespace Sigma.Infra.Data.Repositories
             _dbContext = dbContext;
         }
 
+
         public async Task DeleteAsync(long id)
         {
             var projeto = await _dbContext.Projetos.FindAsync(id);
@@ -44,10 +45,27 @@ namespace Sigma.Infra.Data.Repositories
         {
             return await _dbContext.Projetos.FindAsync(id);
         }
+        public async Task<Login> GetByUsuarioAsync(string usuario)
+        {
+            return await _dbContext.Logins
+            .Where(l => l.Usuario == usuario)
+            .Select(l => new Login { Usuario = l.Usuario, Senha = l.Senha })
+            .FirstOrDefaultAsync();
+        }
 
         public async Task<bool> Inserir(Projeto entidade)
         {
+            if (entidade.Status == StatusProjeto.Encerrado)
+                entidade.DataRealTermino = DateTime.UtcNow;            
+
             await _dbContext.Set<Projeto>().AddAsync(entidade);
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> InserirLogin(Login login)
+        {
+            await _dbContext.Set<Login>().AddAsync(login);
             await _dbContext.SaveChangesAsync();
             return true;
         }
@@ -61,5 +79,6 @@ namespace Sigma.Infra.Data.Repositories
             _dbContext.Projetos.Update(projeto);
             await _dbContext.SaveChangesAsync();
         }
+
     }
 }
